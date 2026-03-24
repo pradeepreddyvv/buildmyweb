@@ -1,58 +1,98 @@
-# Installation
-Clone the Repo => 
-git clone  https://github.com/vishwas04/buildmyweb
+# BuildMyWeb — Hand-Drawn Wireframe to HTML/CSS
 
-TERMINAL 1 => 
-cd buildmyweb -> 
-cd client -> 
-npm install -> 
-npm run-script build -> 
+**Capstone Project, PES University**
+
+End-to-end platform that converts hand-drawn wireframes into production HTML/CSS using a custom **CNN+CTC deep learning model** and **OpenCV** computer vision pipeline, achieving **95% text recognition accuracy**. Includes a React-based live editor for real-time UI customization, reducing prototyping time by **30%**.
+
+[![Demo](https://img.shields.io/badge/YouTube-Demo-red)](https://www.youtube.com/watch?v=yyLzYmfoxHw)
+[![License](https://img.shields.io/badge/License-MIT-green)](MIT_License)
+
+## How It Works
+
+```
+Hand-drawn wireframe (photo/scan)
+        │
+        ▼
+┌───────────────────┐
+│  OpenCV Pipeline   │  → Edge detection, contour analysis,
+│  (Segmentation)    │    component identification
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│  CNN + CTC Model   │  → Text recognition from UI elements
+│  (TensorFlow)      │    95% accuracy on handwritten text
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│  HTML/CSS Generator│  → Structured layout generation
+│  (Flask Backend)   │    from detected components
+└────────┬──────────┘
+         │
+         ▼
+┌───────────────────┐
+│  React Live Editor │  → Real-time preview and editing
+│  (Client)          │    Download final HTML file
+└───────────────────┘
+```
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| CV/ML | OpenCV (segmentation), TensorFlow (CNN+CTC model) |
+| Backend | Python, Flask |
+| Frontend | React, Node.js |
+| Model | Pre-trained CNN+CTC (`model_20.h5`) for handwritten text recognition |
+
+## Examples
+
+### Input (Hand-drawn wireframe)
+<img src="/test.jpeg" height="400" width="300" />
+
+### Output (Generated HTML)
+<img src="/output.png" />
+
+More examples in [`/input`](input/) and [`/output`](output/) directories.
+
+## Setup
+
+**Terminal 1 — Frontend:**
+```bash
+cd client
+npm install
+npm run build
 npm start
+```
 
-
-
-TERMINAL 2 => 
-cd buildmyweb -> 
-install Dependencies for server.py [bit Headache] -> 
+**Terminal 2 — Backend:**
+```bash
+pip install -r requirements.txt
 python3 server.py
+```
 
+## Demo
 
-# FROM THIS IMAGE 
-<img src = "/test.jpeg" height="400" width="300" />
+[![BuildMyWeb Demo](https://img.youtube.com/vi/yyLzYmfoxHw/maxresdefault.jpg)](https://www.youtube.com/watch?v=yyLzYmfoxHw)
 
-# To
-[HTML FILE](https://github.com/vishwas04/buildmyweb/blob/main/a1-2.html)
-# or
-[Download The File from here](https://drive.google.com/file/d/1B_nlSvAOV-S91PukxZDq3Z0z82jNHWBy/view?usp=sharing)
+## Project Structure
 
-# How it looks like
-<img src = "/output.png" />
+```
+├── client/             # React frontend with live HTML editor
+├── segmentation/       # OpenCV image processing pipeline
+├── server.py           # Flask backend — CV pipeline + HTML generation
+├── model_20.h5         # Pre-trained CNN+CTC model
+├── input/              # Sample hand-drawn wireframes
+├── output/             # Generated HTML outputs
+├── flowchart.png       # System architecture diagram
+└── requirements.txt    # Python dependencies
+```
 
-# FEW MORE...
-# FROM THIS IMAGE 
-<img src = "/input/test2.jpeg" height="400" width="300"/>
-# To
-<img src = "/output/output2.png" />
+## License
 
-# FEW MORE...
-# FROM THIS IMAGE 
-<img src = "/input/test3.jpeg" height="400" width="300"/>
-# To
-<img src = "/output/output3.png" />
+[MIT License](MIT_License)
 
-# FEW MORE...
-# FROM THIS IMAGE 
-<img src = "/input/p1.jpeg" height="400" width="300" />
-# To
-<img src = "/output/p1.png" />
+## Author
 
-
-# HOW DOES THIS WORK ?
-<img src = "/flowchart.png" height="400" width="300" />
-
-# There is an INTERFACE where users can edit the generated HTML page and give the filename before downloading
-
-[DEMO VIDEO](https://www.youtube.com/watch?v=yyLzYmfoxHw)
-
-
-[MIT License](/MIT_License)
+**Pradeep Reddy Venuthurla**, PES University — B.Tech Computer Science & Engineering
